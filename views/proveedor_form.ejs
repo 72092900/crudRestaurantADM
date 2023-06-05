@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<html lang="es" dir="ltr">
+  <head>
+
+        <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <meta charset="UTF-8">
+    <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+
+   <SCript src="empleados-form.js"></SCript>
+<body>
+  <%- include('layout/menuproveedor'); %>
+  <section class="home-section">
+
+    <div class="m-2">
+
+        <div class="contaimer">
+            <div>
+              <h3 class="table table-dark p-2" style="text-align: center;">FORMULARIO DE PROVEEDORES</h3>
+                <div class="card-body">
+                <form action="/proveedor/save" method="post">
+
+                    <div class="form-group">
+                      <label for="txtIdProveedor">IDPROVEEDOR</label>
+                      <input type="text" class="form-control"
+                          id="txtIdProveedor"
+                          name="idProveedor"
+                          value="<%= proveedorForm.idProveedor %>"
+                          readonly>
+                    </div> 
+
+                    <div class="form-group">
+                        <label for="txtProveedor">PROVEEDOR</label>
+                        <input type="text" class="form-control"
+                            id="txtProveedor"
+                            name="proveedor"
+                            value="<%= proveedorForm.proveedor %>"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <label for="txtProducto">PRODUCTO</label>
+                        <input type="text" class="form-control"
+                            id="txtProducto"
+                            name="producto"
+                            value="<%= proveedorForm.producto %>"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <label for="txtTelefono">TELEFONO</label>
+                        <input type="number" class="form-control"
+                            id="txtTelefono"
+                            name="telefono"
+                            value="<%= proveedorForm.telefono %>"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <label for="txtCorreo">CORREO</label>
+                        <input type="email" class="form-control"
+                            id="txtCorreo"
+                            name="correo"
+                            value="<%= proveedorForm.correo %>"
+                            >
+                    </div>
+
+                    </div>
+                    <input type="submit" class="btn btn-success"
+                    value="GUARDAR">
+                    <a href="/proveedor/list" class="btn btn-danger">CANCELAR</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</section>
+<script>
+let sidebar = document.querySelector(".sidebar");
+let closeBtn = document.querySelector("#btn");
+let searchBtn = document.querySelector(".bx-search");
+
+closeBtn.addEventListener("click", ()=>{
+sidebar.classList.toggle("open");
+menuBtnChange();//calling the function(optional)
+});
+
+searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+sidebar.classList.toggle("open");
+menuBtnChange(); //calling the function(optional)
+});
+
+// following are the code to change sidebar button(optional)
+function menuBtnChange() {
+if(sidebar.classList.contains("open")){
+ closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+}else {
+ closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+}
+}
+</script>
+</body>
+</html>
+

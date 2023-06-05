@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<html lang="es" dir="ltr">
+  <head>
+
+        <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <meta charset="UTF-8">
+    <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
+
+
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    
+    
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+
+   <script src="empleados.js"></script>
+<body>
+  <%- include('layout/menu'); %>
+  <section class="home-section">
+
+    <div class="table-responsive tablasa-das">
+        <table class="table table-bordered table table-hover " id="tablaEmpleado">
+            <thead class="table table-dark tabla-sdsa">
+              <h3 class="table table-dark p-2 tt-tre" style="text-align: center;">EMPLEADOS</h3>
+                <tr>
+                    <td>IDEMPLEADO</td>
+                    <td>APELLIDOS Y NOMBRES</td>
+                    <td>DNI</td>
+                    <td>TELEFONO</td>
+                    <td>DIRECCION</td>
+                    <td>PUESTO</td>
+                    <td>ACCIONES</td>
+                </tr>
+                    <tbody>
+                        <%  if(dataEmpleados.length){ %>
+                            <%  dataEmpleados.forEach( item =>{ %>
+                                <tr>
+                                    <td><%=  item.idEmpleado %>  </td>
+                                    <td><%=  item.nombApellido %>  </td>
+                                    <td><%=  item.dni %>  </td>
+                                    <td><%=  item.telefono %>  </td>
+                                    <td><%=  item.direccion %>  </td>
+                                    <td><%=  item.puesto %>  </td>
+                                    <td>
+                                      <a class="btn btn-warning" href="/empleado/form/<%=  item.idEmpleado %>">EDITAR</a>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                        <% } %>
+                    </tbody>
+                </table>
+                <a class="btn btn-success" href="/empleado/form/0">NUEVO</a>
+                </div>
+        
+          </section>
+          <script>
+let sidebar = document.querySelector(".sidebar");
+let closeBtn = document.querySelector("#btn");
+let searchBtn = document.querySelector(".bx-search");
+
+closeBtn.addEventListener("click", ()=>{
+sidebar.classList.toggle("open");
+menuBtnChange();//calling the function(optional)
+});
+
+searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+sidebar.classList.toggle("open");
+menuBtnChange(); //calling the function(optional)
+});
+
+// following are the code to change sidebar button(optional)
+function menuBtnChange() {
+if(sidebar.classList.contains("open")){
+ closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+}else {
+ closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+}
+}
+</script>
+    </body>
+</html>
+          
